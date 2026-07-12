@@ -57,7 +57,7 @@ resource "azurerm_linux_web_app" "frontend" {
     var.frontend.app_settings,
     {
       ENVIRONMENT  = var.environment
-      API_URL      = var.api_url
+      API_URL      = var.frontend.api_url
       VITE_API_URL = "https://${azurerm_linux_web_app.api.default_hostname}"
     }
   )
