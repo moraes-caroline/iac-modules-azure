@@ -14,10 +14,10 @@ variable "tenant_id" {
   type = string
 }
 
-variable "admin_password" {
-  type      = string
-  sensitive = true
-}
+# variable "admin_password" {
+#   type      = string
+#   sensitive = true
+# }
 
 variable "tags" {
   type    = map(string)
