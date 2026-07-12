@@ -16,3 +16,9 @@ resource "azurerm_private_endpoint" "this" {
 
   tags = var.tags
 }
+
+private_dns_zone_group {
+  name = "default"
+
+  private_dns_zone_ids = var.private_dns_zone_ids
+}

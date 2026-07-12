@@ -32,3 +32,8 @@ variable "tags" {
   type    = map(string)
   default = {}
 }
+
+variable "private_dns_zone_ids" {
+  type    = list(string)
+  default = []
+}
