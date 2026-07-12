@@ -12,3 +12,9 @@ resource "azurerm_key_vault" "this" {
 
   tags = var.tags
 }
+
+resource "azurerm_key_vault_secret" "sql_password" {
+  name         = "sql-admin-password"
+  value        = random_password.sql.result
+  key_vault_id = azurerm_key_vault.this.id
+}

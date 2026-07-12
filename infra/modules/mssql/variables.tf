@@ -12,6 +12,7 @@ variable "admin_password" {
 
 variable "sku_name" {}
 
+
 variable "tags" {
   type = map(string)
 }
