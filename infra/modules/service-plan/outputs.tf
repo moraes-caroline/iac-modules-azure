@@ -1,3 +1,7 @@
-output "frontend_url" {
-  value = "https://${azurerm_linux_web_app.frontend.default_hostname}"
+output "id" {
+  value = azurerm_service_plan.this.id
+}
+
+output "name" {
+  value = azurerm_service_plan.this.name
 }
