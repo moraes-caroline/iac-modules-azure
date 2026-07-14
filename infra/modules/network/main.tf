@@ -6,7 +6,9 @@ resource "azurerm_virtual_network" "this" {
   address_space = var.address_space
 }
 
-# API
+#################################################
+# API APP SERVICE
+#################################################
 
 resource "azurerm_subnet" "api" {
   name                 = "snet-appservice-api"
@@ -28,7 +30,9 @@ resource "azurerm_subnet" "api" {
   }
 }
 
-# Frontend
+#################################################
+# FRONTEND APP SERVICE
+#################################################
 
 resource "azurerm_subnet" "frontend" {
   name                 = "snet-appservice-front"
@@ -50,7 +54,9 @@ resource "azurerm_subnet" "frontend" {
   }
 }
 
-# Private Endpoints
+#################################################
+# PRIVATE ENDPOINTS
+#################################################
 
 resource "azurerm_subnet" "private_endpoints" {
   name                 = "snet-private-endpoints"
@@ -60,26 +66,4 @@ resource "azurerm_subnet" "private_endpoints" {
   address_prefixes = ["10.10.3.0/24"]
 
   private_endpoint_network_policies = "Disabled"
-}
-
-# Database
-
-resource "azurerm_subnet" "database" {
-  name                 = "snet-db"
-  resource_group_name  = var.resource_group_name
-  virtual_network_name = azurerm_virtual_network.this.name
-
-  address_prefixes = ["10.10.4.0/24"]
-
-  delegation {
-    name = "postgres"
-
-    service_delegation {
-      name = "Microsoft.DBforPostgreSQL/flexibleServers"
-
-      actions = [
-        "Microsoft.Network/virtualNetworks/subnets/join/action"
-      ]
-    }
-  }
 }
