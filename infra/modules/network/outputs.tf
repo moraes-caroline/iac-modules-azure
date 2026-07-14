@@ -10,10 +10,6 @@ output "frontend_subnet_id" {
   value = azurerm_subnet.frontend.id
 }
 
-output "database_subnet_id" {
-  value = azurerm_subnet.database.id
-}
-
 output "private_endpoint_subnet_id" {
   value = azurerm_subnet.private_endpoints.id
 }
